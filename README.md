@@ -99,24 +99,4 @@ HomeFragment  ──[tap note]──►  DetailFragment
 
 ---
 
-## ✅ Exam Requirements Checklist
 
-- [x] **Menu** — Toolbar menu in `HomeFragment` (Sync + About)
-- [x] **List** — `RecyclerView` with `ListAdapter` + `DiffUtil` in `HomeFragment`
-- [x] **MVVM Architecture** — `NoteViewModel` + `NoteRepository` + `LiveData`
-- [x] **Database** — Room (local) + Retrofit (remote API sync)
-- [x] **New Feature** — Glide image loading (never used in lectures)
-- [x] **README** — this file
-- [x] **No `findViewById`** — ViewBinding used throughout
-- [x] **No XML layouts with `Fragment` tag** — uses `FragmentContainerView`
-
----
-
-## 🚀 How to Run
-
-1. Clone the repository
-2. Open in Android Studio (Hedgehog or newer)
-3. Wait for Gradle sync to complete
-4. Run on emulator or physical device (API 26+)
-
-> **Note:** Firebase is included as a dependency but requires a `google-services.json` file for actual use. The app works without it using Room + Retrofit only.
