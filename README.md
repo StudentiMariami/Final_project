@@ -61,21 +61,13 @@ Room (local DB)         Retrofit (remote API)
 
 ### Key Technical Decisions
 
-- **ViewBinding** is used everywhere instead of `findViewById` (which is forbidden)
+- **ViewBinding** is used everywhere instead of `findViewById` 
 - **Single Activity Architecture**: one `MainActivity` hosts all Fragments
 - **Safe Args**: type-safe argument passing between Fragments via Navigation Component
 - **DiffUtil**: RecyclerView only redraws items that actually changed
 - **Coroutines + Dispatchers.IO**: all database and network calls run off the main thread
 - **Singleton Pattern**: both Room database and Retrofit instance are singletons
 
-### New Feature: Glide Image Loading 🖼️
-
-Glide was not used in any previous lecture. It handles:
-- Downloading images from URLs on a background thread
-- Caching images to memory and disk (fast reloads)
-- Showing a placeholder while the image loads
-- Showing an error icon if the image fails
-- Smooth image transitions and `thumbnail()` for progressive loading
 
 ### Database
 
