@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_main.xml — The ROOT layout of the app.
+
+    It contains:
+    1. A Toolbar (acts as the ActionBar with title + menu)
+    2. A NavHostFragment (the container where Fragments are swapped in/out)
+
+    CoordinatorLayout allows the Toolbar and content to work together
+    (e.g., Toolbar can collapse or the FAB can anchor to the bottom sheet).
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- AppBarLayout wraps the Toolbar so it integrates with CoordinatorLayout scrolling -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+            MaterialToolbar — replaces the default ActionBar.
+            MainActivity calls setSupportActionBar(binding.toolbar) to activate it.
+        -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--
+        FragmentContainerView hosts the Navigation Component.
+        app:navGraph points to res/navigation/nav_graph.xml which defines all screens.
+        app:defaultNavHost="true" means hardware back button is handled by NavController.
+    -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:navGraph="@navigation/nav_graph"
+        app:defaultNavHost="true" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

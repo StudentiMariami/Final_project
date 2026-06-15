@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_note.xml — Layout for a SINGLE ROW in the RecyclerView list.
+
+    This layout is inflated by NoteAdapter for each note in the list.
+    ViewBinding generates ItemNoteBinding from this file.
+
+    MaterialCardView gives each item a card with rounded corners and elevation shadow.
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <!-- LinearLayout arranges the card's children vertically -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!--
+            Optional image loaded by Glide (the NEW FEATURE).
+            If note.imageUrl is empty, this is hidden in NoteAdapter.bind().
+        -->
+        <ImageView
+            android:id="@+id/imageViewNote"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Note image"
+            android:visibility="gone" />
+
+        <!-- Note title — bold, larger text -->
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!-- Note content preview — smaller, secondary color, max 2 lines -->
+        <TextView
+            android:id="@+id/textViewContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:textColor="?android:attr/textColorSecondary"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- Timestamp shown at the bottom of the card -->
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:textColor="?android:attr/textColorHint" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

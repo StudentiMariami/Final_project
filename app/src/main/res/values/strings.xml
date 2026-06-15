@@ -1,0 +1,4 @@
+<resources>
+    <!-- App name shown in the launcher and Toolbar -->
+    <string name="app_name">AFinal Notes</string>
+</resources>

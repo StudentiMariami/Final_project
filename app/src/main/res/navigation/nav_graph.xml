@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    nav_graph.xml — The Navigation Graph
+
+    This file defines:
+    1. All screens (fragments) in the app — called "destinations"
+    2. All paths between screens — called "actions"
+    3. Arguments passed between screens — called "arguments"
+
+    The Navigation Component reads this file and handles:
+    - Fragment transactions (showing/hiding fragments)
+    - Back stack management (pressing back goes to the right screen)
+    - Safe Args (type-safe argument passing between fragments)
+
+    app:startDestination="@id/homeFragment" — the first screen shown when the app opens
+-->
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <!--
+        HomeFragment — the list screen.
+        Has TWO actions leading to other screens.
+    -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.afinal.ui.home.HomeFragment"
+        android:label="My Notes"
+        tools:layout="@layout/fragment_home">
+
+        <!-- Action: navigate from Home → AddFragment -->
+        <action
+            android:id="@+id/action_home_to_add"
+            app:destination="@id/addFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <!-- Action: navigate from Home → DetailFragment (passes noteId as argument) -->
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <!-- AddFragment — the "create note" form screen -->
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.afinal.ui.add.AddFragment"
+        android:label="Add Note"
+        tools:layout="@layout/fragment_add" />
+
+    <!--
+        DetailFragment — the full note view screen.
+        Receives noteId as a Safe Arg (type-safe integer argument).
+    -->
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.afinal.ui.detail.DetailFragment"
+        android:label="Note Detail"
+        tools:layout="@layout/fragment_detail">
+
+        <!--
+            argument: noteId is passed from HomeFragment when user taps a note.
+            app:argType="integer" — enforced at compile time by Safe Args.
+            Safe Args generates DetailFragmentArgs and HomeFragmentDirections classes.
+        -->
+        <argument
+            android:name="noteId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+
+    </fragment>
+
+</navigation>

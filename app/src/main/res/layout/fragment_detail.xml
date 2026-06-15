@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_detail.xml — Layout for DetailFragment (full note view)
+
+    Shows the full title, content, date, and optionally an image loaded by Glide.
+    ViewBinding generates FragmentDetailBinding from this file.
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!--
+            ImageView for the note's optional image.
+            Glide loads the image here in DetailFragment.loadNote().
+            Visibility is set to GONE if there is no imageUrl.
+        -->
+        <ImageView
+            android:id="@+id/imageViewDetail"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Note image"
+            android:visibility="gone" />
+
+        <!-- Full title of the note -->
+        <TextView
+            android:id="@+id/textViewDetailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <!-- Date the note was created -->
+        <TextView
+            android:id="@+id/textViewDetailDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:textColor="?android:attr/textColorHint" />
+
+        <!-- Divider line between header and content -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="?android:attr/listDivider" />
+
+        <!-- Full note content (no line limit here — shows everything) -->
+        <TextView
+            android:id="@+id/textViewDetailContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:lineSpacingMultiplier="1.5"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <!-- Delete button at the bottom -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonDelete"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Delete Note"
+            android:textColor="@color/design_default_color_error" />
+
+    </LinearLayout>
+
+</ScrollView>

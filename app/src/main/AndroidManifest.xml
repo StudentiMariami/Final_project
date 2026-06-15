@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    AndroidManifest.xml — the "identity card" of the app.
+    It declares all Activities, permissions, and app-level settings.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- INTERNET permission is required for Retrofit (API calls) and Firebase -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AFinal">
+
+        <!--
+            MainActivity is the single entry point of the app.
+            The Navigation Component will swap Fragments inside it.
+            INTENT-FILTER marks this as the app's launcher activity.
+        -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

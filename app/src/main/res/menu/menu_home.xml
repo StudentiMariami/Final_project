@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    menu_home.xml — The Toolbar (ActionBar) menu for HomeFragment
+
+    This defines the menu items shown in the top-right of the Toolbar.
+    HomeFragment inflates this in setupMenu() using MenuProvider.
+
+    app:showAsAction options:
+    - "always"   → always visible as an icon in the Toolbar
+    - "ifRoom"   → show as icon if there's space, otherwise in the overflow (⋮) menu
+    - "never"    → always in the overflow (⋮) menu (three-dot menu)
+    - "withText" → show text alongside the icon
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--
+        Sync button — triggers viewModel.syncFromRemote() in HomeFragment.
+        Downloads notes from the remote API (Retrofit) and saves them to Room.
+        showAsAction="always" — visible as an icon in the Toolbar.
+    -->
+    <item
+        android:id="@+id/action_sync"
+        android:title="Sync"
+        android:icon="@android:drawable/ic_popup_sync"
+        app:showAsAction="always" />
+
+    <!--
+        About item — shows an AlertDialog with app info.
+        "never" puts it in the overflow (⋮) dropdown menu.
+    -->
+    <item
+        android:id="@+id/action_about"
+        android:title="About"
+        app:showAsAction="never" />
+
+</menu>

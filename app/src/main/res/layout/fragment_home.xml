@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_home.xml — Layout for HomeFragment (the notes list screen)
+
+    Contains:
+    - RecyclerView: scrollable vertical list of notes
+    - TextView: "empty" message shown when there are no notes
+    - ProgressBar: spinning indicator shown while syncing from the API
+    - FloatingActionButton (FAB): the "+" button to add a new note
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- FrameLayout stacks views on top of each other -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--
+            RecyclerView — displays the scrollable list of notes.
+            The NoteAdapter feeds data into this view.
+            LinearLayoutManager arranges items in a vertical list.
+        -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewNotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:clipToPadding="false" />
+
+        <!-- Shown only when the notes list is empty (controlled in HomeFragment.kt) -->
+        <TextView
+            android:id="@+id/textViewEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="No notes yet.\nTap + to add one!"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="?android:attr/textColorSecondary"
+            android:visibility="gone" />
+
+        <!-- Spinning progress indicator shown while syncing from remote API -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!--
+        FloatingActionButton — the circular "+" button in the bottom-right corner.
+        Tapping it navigates to AddFragment.
+        app:layout_anchor pins it to the parent (CoordinatorLayout).
+    -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Add Note"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
